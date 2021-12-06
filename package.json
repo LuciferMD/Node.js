@@ -1,0 +1,15 @@
+{
+  "name": "mus",
+  "version": "1.0.0",
+  "description": "Pr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dimon",
+  "license": "ISC",
+  "dependencies": {
+    "Express": "^3.0.1",
+    "sequelize": "^6.12.0-beta.1"
+  }
+}
