@@ -1,24 +1,24 @@
-const { DataTypes }= require('sequelize');
-const sequelize = require('./sequelizeDB');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DBContext/Sequelize');
 
-let playlistsMusic = sequelize.define(
-    'playlists_music',
+let playlistMusic = sequelize.define(
+    'playlist_music',
     {
         id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             allowNull: false,
             unique: true,
             autoIncrement: true
         },
         playlistId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'playlsit_id'
         },
         musicId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'music_id'
@@ -30,4 +30,4 @@ let playlistsMusic = sequelize.define(
     }
 );
 
-module.exports = playlistsMusic;
+module.exports = playlistMusic;

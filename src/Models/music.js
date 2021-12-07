@@ -1,11 +1,11 @@
-const { Sequelize, DataTypes } = require('sequelize')
-const sequelize = new Sequelize('sqlite::memory:')
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DBContext/Sequelize');
 
 const Music = sequelize.define(
   'music',
   {
     id: {
-        type: DataTypes.BIGINT.UNSIGNED,
+        type: DataTypes.BIGINT,
         primaryKey: true,
         allowNull: false,
         unique: true,
@@ -15,13 +15,13 @@ const Music = sequelize.define(
         type: DataTypes.STRING
     },
     authorId:{
-        type: DataTypes.BIGINT.UNSIGNED,
+        type: DataTypes.BIGINT,
         allowNull: false,
         unique: true,
         field: 'author_id'
     } ,
     genreId:{
-        type: DataTypes.BIGINT.UNSIGNED,
+        type: DataTypes.BIGINT,
         allowNull: false,
         unique: true,
         field: 'genre_id'
@@ -42,5 +42,5 @@ const Music = sequelize.define(
 )
 
 // `sequelize.define` возвращает модель
-console.log(Music === sequelize.models.Music) // true
-//module.exports = Music;
+//console.log(Music === sequelize.models.Music) // true
+module.exports = Music;

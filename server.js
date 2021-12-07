@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const sequelize = require('./src/Associations/associations')
 
 app.get('/', (req, res) => {
   res.send('Hell World!')

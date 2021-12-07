@@ -1,24 +1,24 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelizeDB');
+const sequelize = require('../DBContext/Sequelize');
 
-let Followers = sequelize.define(
+let Follower = sequelize.define(
     'followers',
     {
         id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             allowNull: false,
             unique: true,
             autoIncrement: true
         },
         userId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'user_id'
         },
         followersId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'followers_id'
@@ -30,4 +30,4 @@ let Followers = sequelize.define(
     }
 );
 
-module.exports = Followers;
+module.exports = Follower;

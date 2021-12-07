@@ -1,24 +1,24 @@
-const { DataTypes }= require('sequelize');
-const sequelize = require('./sequelizeDB');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DBContext/Sequelize');
 
 let UserInfo = sequelize.define(
     'user_info',
     {
         id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             allowNull: false,
             unique: true,
             autoIncrement: true
         },
         userId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'user_id'
         },
         email: {
-            type: DataTypes.email,
+            type: DataTypes.STRING
         },
         avatar : {
             type: DataTypes.BLOB

@@ -1,11 +1,11 @@
-const { Sequelize, DataTypes } = require('sequelize')
-const sequelize = new Sequelize('sqlite::memory:')
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DBContext/Sequelize');
 
 const User = sequelize.define(
   'User',
   {
     id: {
-        type: DataTypes.BIGINT.UNSIGNED,
+        type: DataTypes.BIGINT,
         primaryKey: true,
         allowNull: false,
         unique: true,
@@ -27,5 +27,5 @@ const User = sequelize.define(
 )
 
 // `sequelize.define` возвращает модель
-console.log(User === sequelize.models.User) // true
-//module.exports = users;
+//console.log(User === sequelize.models.User) // true
+module.exports = User;

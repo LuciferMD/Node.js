@@ -1,24 +1,24 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelizeDB');
+const sequelize = require('../DBContext/Sequelize');
 
 let Comment = sequelize.define(
-    'comments',
+    'comment',
     {
         id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             allowNull: false,
             unique: true,
             autoIncrement: true
         },
         authorId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'author_id'
         },
         musicId: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT,
             allowNull: false,
             unique: true,
             field: 'music_id'
