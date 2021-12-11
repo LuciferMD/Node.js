@@ -1,4 +1,4 @@
-const sequelize = require("../DBContext/Sequelize");
+const sequelize = require("../Sequelize/Sequelize");
 
 const comment         = require("../Models/comment");
 const follower      = require("../Models/follower");
@@ -13,24 +13,32 @@ const user      = require("../Models/user");
 
 
 
-
+// userInfo -> user
 
 user.hasOne( userInfo);
 userInfo.belongsTo( user);
 
+// playlist -> user
+
 playlist.belongsTo(user,{foreignKey: 'authorId'});
 user.hasMany(playlist, {foreignKey: 'authorId'}); 
+
+// music -> playlist_music -> playlist
 
 playlist.belongsToMany(music, {through:'playlists_music', foreignKey: 'playlistId', otherKey:'musicId'});
 music.belongsToMany(playlist, {through:'playlists_music', foreignKey: 'musicId', otherKey:'playlistId'});
 
+//music -> user_music -> user
+
 user.belongsToMany(music, {through:'user_music', foreignKey: 'userId', otherKey:'musicId'});
 music.belongsToMany(user, {through:'user_music', foreignKey: 'musicId', otherKey:'userId'});
+
+//genre -> music
 
 music.belongsTo(genre);
 genre.hasMany(music);
 
-//like
+//like -> music
 
 like.belongsTo(music);
 music.hasMany(like);
@@ -38,7 +46,7 @@ music.hasMany(like);
 like.belongsTo(user, {foreignKey:'authorId'});
 user.hasMany(like, {foreignKey:'authorId'});
 
-//comment
+//comment -> music
 
 comment.belongsTo(music);
 music.hasMany(comment);
@@ -46,17 +54,17 @@ music.hasMany(comment);
 comment.belongsTo(user, {foreignKey:'authorId'});
 user.hasMany(comment, {foreignKey:'authorId'});
 
-//followers
-//to do
-user.belongsToMany(user, {through:'followers', foreignKey: 'userId', otherKey:'followerId'});
-user.belongsToMany(user, {through:'followers', foreignKey: 'followerId', otherKey:'userId'});
+//followers -> users
+
+user.hasMany(follower, {foreignKey: 'userId'});
+follower.belongsTo(user, {foreignKey: 'userId'});
+
+//user -> folower
+
+user.hasOne(follower, {foreignKey: ' followersId'});
+follower.belongsTo(user, {foreignKey: 'followersId'});
 
 
-
-/*
-users( bets, { foreignKey: 'userId', as: 'createdBets' });
-bets.belongsTo( users, { foreignKey: 'userId', as: 'user' });
-*/
 sequelize.sync();
 
 module.exports = sequelize;

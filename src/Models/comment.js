@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../DBContext/Sequelize');
+const sequelize = require('../Sequelize/Sequelize');
 
 let Comment = sequelize.define(
     'comment',
