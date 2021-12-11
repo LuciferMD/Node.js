@@ -27,6 +27,7 @@ let UserMusic = sequelize.define(
     },
     {
         tableName: 'user_music',
+        timestamps: false,
     }
 );
 

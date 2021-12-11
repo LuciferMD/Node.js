@@ -14,6 +14,9 @@ const Genre = sequelize.define(
     name: {
         type: DataTypes.STRING
     }
+   },
+   {
+    timestamps: false,
    }
 )
 

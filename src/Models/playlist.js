@@ -29,6 +29,7 @@ const Playlist = sequelize.define(
   },
   {
     tableName: 'playlists',
+    timestamps: false,
   }
 )
 

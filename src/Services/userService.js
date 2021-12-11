@@ -9,6 +9,11 @@ module.exports = userService = {
         if(await user.getByLogin(instance.login))
            throw(console.log("username already in use"));
 
-        return user.addUser(user);
+        return user.addUser(instance);
+    },
+
+    returnAllUsers : async function(){
+
+        return await user.returnAllUsers();
     }
 }

@@ -27,6 +27,7 @@ let Like = sequelize.define(
     },
     {
         tableName: 'likes',
+        timestamps: false,
     }
 );
 

@@ -30,6 +30,7 @@ let Comment = sequelize.define(
     },
     {
         tableName: 'comments',
+        timestamps: false,
     }
 );
 

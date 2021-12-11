@@ -38,6 +38,7 @@ const Music = sequelize.define(
   },
   {
     tableName: 'music',
+    timestamps: false,
   }
 )
 

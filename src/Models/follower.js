@@ -27,6 +27,7 @@ let Follower = sequelize.define(
     },
     {
         tableName: 'followers',
+        timestamps: false,
     }
 );
 

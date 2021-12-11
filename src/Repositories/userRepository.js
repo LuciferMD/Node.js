@@ -16,6 +16,11 @@ module.exports = userRepository ={
         let user = await sequelize.models.User.create(instance);
         
         return user;
+    },
+
+    returnAllUsers : async function(){
+        
+        return await sequelize.models.User;
     }
 
 }
