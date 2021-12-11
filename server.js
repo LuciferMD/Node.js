@@ -2,12 +2,13 @@ const express = require('express')
 const app = express()
 const port = 3000
 const sequelize = require('./src/Associations/associations')
+const userRouter = require('./src/Routers/userRouter');
+const bodyParser =require('body-parser');
 
-app.get('/', (req, res) => {
-  res.send('Hell World!')
-})
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 
-app.get('/user',(req,res)=>{res.send('User its you?')} )
+app.use('/api/user', userRouter);
 
 
 
