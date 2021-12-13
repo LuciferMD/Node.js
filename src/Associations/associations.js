@@ -21,7 +21,7 @@ userInfo.belongsTo( user);
 // playlist -> user
 
 playlist.belongsTo(user,{foreignKey: 'authorId'});
-user.hasMany(playlist, {foreignKey: 'authorId'}); 
+user.hasMany(playlist, {foreignKey: 'authorId', as: 'playlists'}); 
 
 // music -> playlist_music -> playlist
 
@@ -61,7 +61,7 @@ follower.belongsTo(user, {foreignKey: 'userId'});
 
 //user -> folower
 
-user.hasOne(follower, {foreignKey: ' followersId'});
+user.hasMany(follower, {foreignKey: 'followersId'});
 follower.belongsTo(user, {foreignKey: 'followersId'});
 
 

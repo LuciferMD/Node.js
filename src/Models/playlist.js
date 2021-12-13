@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../Sequelize/Sequelize');
 
 const Playlist = sequelize.define(
-  'playlist',
+  'Playlist',
   {
     id: {
         type: DataTypes.BIGINT,
@@ -21,7 +21,8 @@ const Playlist = sequelize.define(
         type: DataTypes.STRING
     },
     avatar : {
-        type: DataTypes.BLOB
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     text:{
         type: DataTypes.TEXT
