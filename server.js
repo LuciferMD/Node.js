@@ -1,15 +1,15 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const sequelize = require('./src/Associations/associations')
 const userRouter = require('./src/Routers/userRouter');
+const playlistRouter = require('./src/Routers/playlistRouter');
 const bodyParser =require('body-parser');
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 app.use('/api/user', userRouter);
-
+app.use('/api/playlist',playlistRouter);
 
 
 app.listen(port, () => {

@@ -31,7 +31,7 @@ let UserInfo = sequelize.define(
         }
     },
     {
-        tableName: 'userInfo',
+        tableName: 'user_info',
         timestamps: false,
     }
 );
