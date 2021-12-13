@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../Sequelize/Sequelize');
 
 let Like = sequelize.define(
-    'like',
+    'Like',
     {
         id: {
             type: DataTypes.BIGINT,
@@ -14,13 +14,11 @@ let Like = sequelize.define(
         authorId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: true,
             field: 'author_id'
         },
         musicId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: true,
             field: 'music_id'
         }
       

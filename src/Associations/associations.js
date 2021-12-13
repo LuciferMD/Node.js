@@ -40,8 +40,8 @@ genre.hasMany(music);
 
 //like -> music
 
-like.belongsTo(music);
-music.hasMany(like);
+like.belongsTo(music,  {foreignKey:'musicId'});
+music.hasMany(like, {foreignKey:'musicId'});
 
 like.belongsTo(user, {foreignKey:'authorId'});
 user.hasMany(like, {foreignKey:'authorId'});
