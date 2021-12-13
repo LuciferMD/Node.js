@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../Sequelize/Sequelize');
 
 const Music = sequelize.define(
-  'music',
+  'Music',
   {
     id: {
         type: DataTypes.BIGINT,
@@ -17,20 +17,17 @@ const Music = sequelize.define(
     authorId:{
         type: DataTypes.BIGINT,
         allowNull: false,
-        unique: true,
         field: 'author_id'
     } ,
     genreId:{
         type: DataTypes.BIGINT,
-        allowNull: false,
-        unique: true,
         field: 'genre_id'
     },
     file:{
         type: DataTypes.STRING
     },
     avatar : {
-        type: DataTypes.BLOB
+        type: DataTypes.STRING
     },
     text:{
         type: DataTypes.TEXT
