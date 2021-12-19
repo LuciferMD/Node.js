@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../Sequelize/Sequelize');
 
 let Follower = sequelize.define(
-    'followers',
+    'Follower',
     {
         id: {
             type: DataTypes.BIGINT,

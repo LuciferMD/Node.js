@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../Sequelize/Sequelize');
 
 const Genre = sequelize.define(
-  'genre',
+  'Genre',
   {
     id: {
         type: DataTypes.BIGINT,

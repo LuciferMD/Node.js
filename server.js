@@ -5,7 +5,9 @@ const userRouter = require('./src/Routers/userRouter');
 const playlistRouter = require('./src/Routers/playlistRouter');
 const musicRouter = require ('./src/Routers/musicRouter')
 const likeRouter =require ('./src/Routers/likeRouter');
-const commentRouter = require('./src/Routers/commentRouter')
+const commentRouter = require('./src/Routers/commentRouter');
+const genreRouter = require('./src/Routers/genreRouter');
+const followerRouter = require('./src/Routers/followerRouter');
 const bodyParser =require('body-parser');
 
 app.use(bodyParser.urlencoded({extended:true}))
@@ -16,6 +18,8 @@ app.use('/api/playlist',playlistRouter);
 app.use('/api/music',musicRouter);
 app.use('/api/like', likeRouter);
 app.use('/api/comment',commentRouter);
+app.use('/api/genre', genreRouter);
+app.use('/api/follower',followerRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
