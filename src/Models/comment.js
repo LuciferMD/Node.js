@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../Sequelize/Sequelize');
 
 let Comment = sequelize.define(
-    'comment',
+    'Comment',
     {
         id: {
             type: DataTypes.BIGINT,
@@ -14,13 +14,13 @@ let Comment = sequelize.define(
         authorId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: true,
+            unique: false,
             field: 'author_id'
         },
         musicId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: true,
+            unique: false,
             field: 'music_id'
         },
         text:{

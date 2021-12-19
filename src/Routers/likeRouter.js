@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post('/add', controller.addLike); 
 router.delete('/id', controller.deleteLike);
-router.get('/allLike', controller.returnAllLike);
+router.get('/all', controller.returnAllLike);
 
 module.exports = router;

@@ -31,40 +31,6 @@ let likeController = {
       }
     },
 
-    // getById : async function(req, res, next){
-    //     console.log("Return music");
-        
-    //   try{  
-    //     let music =  await musicService.getById(req.body.id);
-    //     res.status(200).json(music);
-    //   }
-    //   catch(error){
-    //       next(error);
-    //   }
-    // },
-    
-    // changeMusic : async function(req, res, next){
-    //     console.log("Change music");
-
-    //     let music = {
-    //         id: req.body.id,
-    //         name : req.body.name,
-    //         authorId : req.body.authorId,
-    //         genreId : req.body.genreId,
-    //         file : req.body.file,
-    //         avatar : req.body.avatar,
-    //         text : req.body.text
-    //     }
-
-    //    // res.json(user);
-    //   try{  
-    //     let result =  await musicService.changeMusic(music);
-    //     res.status(200).json(result);
-    //   }
-    //   catch(error){
-    //       next(error);
-    //   }
-    // },
 
     deleteLike : async function(req, res, next){
         console.log("Delete like");

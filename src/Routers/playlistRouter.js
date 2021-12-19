@@ -6,6 +6,6 @@ router.post('/add', controller.addPlaylist);
 router.put('/id',controller.changePlaylist);
 router.get('/id',controller.getById);
 router.delete('/id', controller.deletePlaylist);
-router.get('/allPlaylists', controller.returnAllPlaylist);
+router.get('/all', controller.returnAllPlaylist);
 
 module.exports = router;
