@@ -44,11 +44,8 @@ module.exports = commentRepository ={
             
             comment = await comment.update( 
                 {
-                    name: instance.name || this.name,
-                    authorId: instance.authorId || this.authorId,
-                    genreId: instance.genreId || this.genreId,
-                    file: instance.file || this.file,
-                avatar: instance.avatar || this.avatar,
+                authorId: instance.authorId || this.authorId,
+                musicId: instance.musicId || this.avatar,
                 text: instance.text || this.text
         });
 
