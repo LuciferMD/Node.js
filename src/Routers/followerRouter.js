@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post('/add', controller.addFollower);
 router.get('/all', controller.returnAllFollowers);
-router.delete('/id',controller.deleteFollower);
+router.delete('/:id',controller.deleteFollower);
 
 module.exports = router;

@@ -14,7 +14,6 @@ const Playlist = sequelize.define(
     authorId:{
         type: DataTypes.BIGINT,
         allowNull: false,
-        unique: true,
         field: 'author_id'
     } ,
     name: {

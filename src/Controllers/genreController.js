@@ -4,9 +4,8 @@ const genreService = require('../Services/genreService')
 let genreController = {
 
     addGenre : async function(req, res, next) {
-        console.log("Adding genre");
         let genre = {
-            id: req.body.id,
+            id: req.params.id,
             name : req.body.name,
         }
         try{
@@ -18,7 +17,6 @@ let genreController = {
         }
     },
     returnAllGenres : async function(req, res, next){
-        console.log("Return all genres");
         
         try{  
             let genres =  await genreService.returnAllGenres();
@@ -31,9 +29,8 @@ let genreController = {
     
     
     changeGenre : async function(req, res, next){
-        console.log("Change genre");
         let genre = {
-            id: req.body.id,
+            id: req.params.id,
             name : req.body.name,
         }
 
@@ -49,11 +46,10 @@ let genreController = {
     
 
     deleteGenre: async function(req, res, next){
-        console.log("Delete genre");
 
        // res.json(user);
       try{  
-        let result =  await genreService.deleteGenre(req.body.id);
+        let result =  await genreService.deleteGenre(req.params.id);
         res.status(200).json(result);
       }
       catch(error){

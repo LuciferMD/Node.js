@@ -4,11 +4,10 @@ const userService = require('../Services/commentService')
 let commentController = {
 
     addComment : async function(req, res, next) {
-        console.log("Adding comment");
         let comment = {
-            id: req.body.id,
-            authorId: req.body.id,
-            musicId: req.body.id,
+            id: req.params.id,
+            authorId: req.body.authorId,
+            musicId: req.body.musicId,
             text: req.body.text
         }
         try{
@@ -20,7 +19,7 @@ let commentController = {
         }
     },
     returnAllComments : async function(req, res, next){
-        console.log("Return all comments");
+
         
         try{  
             let comments =  await userService.returnAllComments();
@@ -32,10 +31,9 @@ let commentController = {
     },
     
     getById : async function(req, res, next){
-        console.log("Return comment");
         
         try{  
-            let comment =  await commentService.getById(req.body.id);
+            let comment =  await commentService.getById(req.params.id);
             res.status(200).json(comment);
         }
         catch(error){
@@ -44,9 +42,9 @@ let commentController = {
     },
     
     changeComment: async function(req, res, next){
-        console.log("Change comment");
+       
         let comment = {
-            id: req.body.id,
+            id: req.params.id,
             authorId: req.body.id,
             musicId: req.body.id,
             text: req.body.text
@@ -64,11 +62,10 @@ let commentController = {
 
     
     deleteComment : async function(req, res, next){
-        console.log("Delete comment");
     
        // res.json(user);
       try{  
-        let result =  await commentService.deleteComment(req.body.id);
+        let result =  await commentService.deleteComment(req.params.id);
         res.status(200).json(result);
       }
       catch(error){

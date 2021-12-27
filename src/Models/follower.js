@@ -14,13 +14,11 @@ let Follower = sequelize.define(
         userId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: true,
             field: 'user_id'
         },
         followersId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: true,
             field: 'followers_id'
         }
       

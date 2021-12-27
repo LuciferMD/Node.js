@@ -4,9 +4,8 @@ const musicService = require('../Services/musicService')
 let musicController = {
 
     addMusic : async function(req, res, next) {
-        console.log("Adding music");
         let music = {
-            id: req.body.id,
+            id: req.params.id,
             name : req.body.name,
             authorId : req.body.authorId,
             genreId: req.body.genreId,
@@ -24,7 +23,6 @@ let musicController = {
     },
 
     returnAllMusic : async function(req, res, next){
-        console.log("Return all music");
         
       try{  
         let music =  await musicService.returnAllMusic();
@@ -36,10 +34,9 @@ let musicController = {
     },
 
     getById : async function(req, res, next){
-        console.log("Return music");
         
       try{  
-        let music =  await musicService.getById(req.body.id);
+        let music =  await musicService.getById(req.params.id);
         res.status(200).json(music);
       }
       catch(error){
@@ -48,10 +45,9 @@ let musicController = {
     },
     
     changeMusic : async function(req, res, next){
-        console.log("Change music");
 
         let music = {
-            id: req.body.id,
+            id: req.params.id,
             name : req.body.name,
             authorId : req.body.authorId,
             genreId : req.body.genreId,
@@ -71,12 +67,11 @@ let musicController = {
     },
 
     deleteMusic : async function(req, res, next){
-        console.log("Delete music");
-    
+
 
        // res.json(user);
       try{  
-        let result =  await musicService.deleteMusic(req.body.id);
+        let result =  await musicService.deleteMusic(req.params.id);
         res.status(203).json(result);
       }
       catch(error){

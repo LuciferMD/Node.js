@@ -4,17 +4,17 @@ module.exports = likeRepository ={
  
     addLike : async function(instance){
 
-        let music = await sequelize.models.Music.findOne(
+        let user = await sequelize.models.User.findOne(
             { where:{
-               id: instance.musicId
+               id: instance.authorId
             }}          
         );
 
-        if(!music){
+        if(!user){
             throw new Error("No music");
         }
 
-       let like = await music.createLike(instance);
+       let like = await user.createLike({id: instance.id, musicId : instance.musicId});
 
         return like;
     },
@@ -23,31 +23,6 @@ module.exports = likeRepository ={
         return await sequelize.models.Like.findAll();
     },
 
-    // getById : async function(id){
-        
-    //     return await sequelize.models.User.findOne(
-    //         { where:{
-    //            id: id
-    //         }}          
-    //     );
-    // },
-
-    // changeUser : async function(instance) {
-
-    //     let user = await sequelize.models.User.findOne(
-    //         { where:{
-    //            id: instance.id
-    //         }}          
-    //     );
-        
-    //      user = await user.update( 
-    //             {
-    //             login: instance.login || this.login,
-    //             password: instance.password || this.password    
-    //             });
-
-    //     return user;
-    // },
 
     deleteLike : async function (id) {
         let like = await sequelize.models.Like.findByPk(id);

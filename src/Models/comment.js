@@ -14,13 +14,11 @@ let Comment = sequelize.define(
         authorId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: false,
             field: 'author_id'
         },
         musicId: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            unique: false,
             field: 'music_id'
         },
         text:{

@@ -4,11 +4,10 @@ const musicService = require('../Services/likeService')
 let likeController = {
 
     addLike: async function(req, res, next) { ///??
-        console.log("Adding like");
         let like = {
-            id: req.body.id,
-            authorId: req.body.id,
-            musicId: req.body.id,
+            id: req.params.id,
+            authorId: req.body.authorId,
+            musicId: req.body.musicId,
         }
         try{
             let newLike = await likeService.addLike(like);
@@ -20,7 +19,6 @@ let likeController = {
     },
 
     returnAllLike : async function(req, res, next){
-        console.log("Return all likes");
         
       try{  
         let like =  await likeService.returnAllLike();
@@ -33,12 +31,10 @@ let likeController = {
 
 
     deleteLike : async function(req, res, next){
-        console.log("Delete like");
-    
 
        // res.json(user);
       try{  
-        let result =  await likeService.deleteLike(req.body.id);
+        let result =  await likeService.deleteLike(req.params.id);
         res.status(203).json(result);
       }
       catch(error){

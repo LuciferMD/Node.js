@@ -6,17 +6,17 @@ module.exports = commentRepository ={
     
     addComment : async function(instance){
 
-        let music = await sequelize.models.Music.findOne(
+        let user = await sequelize.models.User.findOne(
             { where:{
-               id: instance.musicId
+               id: instance.authorId
             }}          
         );
 
-        if(!music){
-            throw new Error("No music");
+        if(!user){
+            throw new Error("No user");
         }
 
-       let comment = await music.createComment(instance);
+       let comment = await user.createComment(instance);
 
         return comment;
     },

@@ -1,13 +1,10 @@
-const express = require('express');
 const playlistService = require('../Services/playlistService')
 
 let playlistController = {
 
     addPlaylist : async function(req, res, next) {
-        console.log("Adding playlist");
-
         let playlist = {
-            id: req.body.id,
+            id: req.params.id,
             authorId: req.body.authorId,
             name : req.body.name,
             avatar: req.body.avatar,
@@ -23,10 +20,9 @@ let playlistController = {
     },
 
     changePlaylist : async function(req, res, next) {
-        console.log("Changes playlist");
 
         let playlist = {
-            id: req.body.id,
+            id: req.params.id,
             name : req.body.name,
             avatar: req.body.avatar,
             text : req.body.text,
@@ -41,11 +37,9 @@ let playlistController = {
     },
 
     getById : async function(req, res, next) {
-        console.log("Get playlist");
 
-       
         try{
-            let newPlaylist = await playlistService.getById(req.body.id);
+            let newPlaylist = await playlistService.getById(req.params.id);
             res.status(200).json(newPlaylist);
         }
         catch(error){
@@ -53,13 +47,11 @@ let playlistController = {
         }
     },
     
-    deletePlaylist : async function(req, res, next){
-        console.log("Delete playlist");
-    
+    deletePlaylist : async function(req, res, next){  
 
        // res.json(user);
       try{  
-        let result =  await playlistService.deletePlaylist(req.body.id);
+        let result =  await playlistService.deletePlaylist(req.params.id);
         res.status(200).json(result);
       }
       catch(error){
@@ -70,11 +62,9 @@ let playlistController = {
     
 
     returnAllPlaylist : async function(req, res, next) {
-        console.log("Get all playlists");
-
        
         try{
-            let playlists = await playlistService.returnAllPlaylist(req.body.id);
+            let playlists = await playlistService.returnAllPlaylist();
             res.status(200).json(playlists);
         }
         catch(error){

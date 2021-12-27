@@ -56,13 +56,14 @@ user.hasMany(comment, {foreignKey:'authorId'});
 
 //followers -> users
 
-user.hasMany(follower, {foreignKey: 'userId'});
-follower.belongsTo(user, {foreignKey: 'userId'});
+//user.hasMany(follower, {foreignKey: 'userId'});
+//follower.belongsTo(user, {foreignKey: 'userId'});
 
 //user -> folower
 
 user.hasMany(follower, {foreignKey: 'followersId'});
 follower.belongsTo(user, {foreignKey: 'followersId'});
+//user.belongsToMany(follower, {through: 'followers',foreignKey : 'followersId', otherKey : 'userId' });
 
 
 sequelize.sync();

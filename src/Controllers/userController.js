@@ -1,27 +1,28 @@
 const express = require('express');
 const userService = require('../Services/userService')
+const Joi = require('joi');
+const  authScema  = require('../Middleware/validation_schema');
 
 let userController = {
 
     addUser : async function(req, res, next) {
-        console.log("Adding user");
-        let user = {
-            id: req.body.id,
-            login : req.body.login,
-            password : req.body.password
-        }
-        try{
-            let newUser = await userService.addUser(user);
-            res.status(200).json(newUser);
-        }
-        catch(error){
-            next(error);
-        }
+    
+    let user = {
+      id: req.params.id,
+      login : req.body.login,
+      password : req.body.password
+    }
+    try{
+      let newUser = await userService.addUser(user);
+      res.status(200).json(newUser);
+    }
+    catch(error){
+      next(error);
+    }
     },
 
     returnAllUsers : async function(req, res, next){
-        console.log("Return all users");
-        
+
       try{  
         let users =  await userService.returnAllUsers();
         res.status(200).json(users);
@@ -32,10 +33,9 @@ let userController = {
     },
 
     getById : async function(req, res, next){
-        console.log("Return user");
-        
+     
       try{  
-        let user =  await userService.getById(req.body.id);
+        let user =  await userService.getById(req.params.id);
         res.status(200).json(user);
       }
       catch(error){
@@ -44,9 +44,8 @@ let userController = {
     },
     
     changeUser : async function(req, res, next){
-        console.log("Change user");
         let user = {
-            id: req.body.id,
+            id: req.params.id,
             login : req.body.login,
             password : req.body.password
         }
@@ -62,12 +61,10 @@ let userController = {
     },
 
     deleteUser : async function(req, res, next){
-        console.log("Delete user");
-    
 
        // res.json(user);
       try{  
-        let result =  await userService.deleteUser(req.body.id);
+        let result =  await userService.deleteUser(req.params.id);
         res.status(200).json(result);
       }
       catch(error){

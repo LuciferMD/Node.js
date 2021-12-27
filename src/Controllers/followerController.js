@@ -4,10 +4,9 @@ const followerService = require('../Services/followerService')
 let followerController = {
 
     addFollower : async function(req, res, next) {
-        console.log("Adding follower");
 
         let follower = {
-            id: req.body.id,
+            id: req.params.id,
             userId : req.body.userId,
             followersId : req.body.followersId
         }
@@ -20,7 +19,7 @@ let followerController = {
         }
     },
     returnAllFollowers : async function(req, res, next){
-        console.log("Return all followers");
+       
         
       try{  
         let followers =  await followerService.returnAllFollowers();
@@ -33,12 +32,12 @@ let followerController = {
 
     
     deleteFollower : async function(req, res, next){
-        console.log("Delete follower");
+      
     
 
        // res.json(user);
       try{  
-        let result =  await followerService.deleteFollower(req.body.id);
+        let result =  await followerService.deleteFollower(req.params.id);
         res.status(200).json(result);
       }
       catch(error){
