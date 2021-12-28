@@ -3,11 +3,11 @@ const controller = require('../Controllers/userController')
 const router = express.Router();
 const validate = require("../Middleware/validation_schema");
 const userSchema =require("../Middleware/userSchema");
+const passport = require('passport')
 
-router.post('/register/:id', validate(userSchema.addUser), controller.addUser);
-router.get('/all', controller.returnAllUsers);
-router.get('/:id',controller.getById);
-router.put('/:id', validate(userSchema.changeUser), controller.changeUser);
-router.delete('/:id',controller.deleteUser);
+router.get('/all', passport.authenticate('jwt',{session:false}),controller.returnAllUsers);
+router.get('/:id', passport.authenticate('jwt',{session:false}),controller.getById);
+router.put('/:id', passport.authenticate('jwt',{session:false}),validate(userSchema.changeUser), controller.changeUser);
+router.delete('/:id', passport.authenticate('jwt',{session:false}),controller.deleteUser);
 
 module.exports = router;

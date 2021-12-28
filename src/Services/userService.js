@@ -3,7 +3,7 @@ const user = require("../Repositories/userRepository.js");
 
 module.exports = userService = {
 
-    addUser :async function(instance){
+  addUser :async function(instance){
 
         if(await user.getByLogin(instance.login))
            throw(new Error("username already in use"));
@@ -26,5 +26,10 @@ module.exports = userService = {
 
     deleteUser : async function (id) {
         return await user.deleteUser(id);
+    },
+
+    getByLogin : async function(login){
+        return await user.getByLogin(login);
     }
+
 }

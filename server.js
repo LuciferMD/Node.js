@@ -8,7 +8,9 @@ const likeRouter =require ('./src/Routers/likeRouter');
 const commentRouter = require('./src/Routers/commentRouter');
 const genreRouter = require('./src/Routers/genreRouter');
 const followerRouter = require('./src/Routers/followerRouter');
+const accountRouter =require('./src/Routers/accountRouter');
 const bodyParser =require('body-parser');
+const passport = require('passport');
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
@@ -20,6 +22,11 @@ app.use('/api/like', likeRouter);
 app.use('/api/comment',commentRouter);
 app.use('/api/genre', genreRouter);
 app.use('/api/follower',followerRouter);
+
+app.use('/api',accountRouter);
+app.use(passport.initialize());
+
+require('./src/Middleware/passport')(passport);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
