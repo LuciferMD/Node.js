@@ -1,10 +1,10 @@
 jest.mock('../src/Associations/associations');
 
 const sequelize = require("../src/Associations/associations");
-const repository = require('../src/Repositories/followerRepository');
+const repository = require('../src/Repositories/musicRepository');
 
 
-describe('addFollower', () =>{
+describe('addMusic', () =>{
     let response
     let todos
 
@@ -12,8 +12,7 @@ describe('addFollower', () =>{
 
         todos = {
             id: 1,
-            userId : 2,
-            followersId : 2
+            name:"Thundertruck"
         }   
         
         response ={
@@ -24,7 +23,7 @@ describe('addFollower', () =>{
 
     test('should be called to db', async() =>{     
         try{
-            return repository.addFollower.then(data => {
+            return repository.addMusic.then(data => {
                 expect(sequelize.create).toBeCalled()
             })
         } catch(e){
@@ -36,14 +35,13 @@ describe('addFollower', () =>{
         try{
             sequelize.create.mockReturnValue(response)
 
-            return repository.addFollower.then(data => {
+            return repository.addMusic.then(data => {
                 expect(data.todos).toEqual(todos)
             })
         } catch(e){
             
         }
     })
-
     
 
 

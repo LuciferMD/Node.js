@@ -5,7 +5,6 @@ jest.mock('../src/Repositories/followerRepository', ()=>{
 });
 
 const service = require('../src/Services/followerService');
-const {addFollower} = require('../src/Repositories/followerRepository');
 
 
 let follower
@@ -16,7 +15,7 @@ beforeEach(() => {
         userId : 2,
         followersId : 2
     }     
-    fn = jest.fn(addFollower);
+   
 })
 
 describe('addFollower', () =>{
