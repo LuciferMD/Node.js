@@ -7,7 +7,7 @@ module.exports = userService = {
 
         if(await user.getByLogin(instance.login))
            throw(new Error("username already in use"));
-
+    
         return await user.addUser(instance);
     },
 

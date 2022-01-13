@@ -4,11 +4,14 @@ module.exports = followerRepository ={
 
     
     addFollower : async function(instance){
-
-        let follower = await sequelize.models.Follower.create(instance);
-        
-        return follower;
+        try{
+            let follower = await sequelize.models.Follower.create(instance);     
+            return follower;
+        }catch(e){
+            throw(new Error(e));
+        }
     },
+    
     returnAllFollowers : async function(){
         
         return await sequelize.models.Follower.findAll();
