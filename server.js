@@ -11,9 +11,18 @@ const followerRouter = require('./src/Routers/followerRouter');
 const accountRouter =require('./src/Routers/accountRouter');
 const bodyParser =require('body-parser');
 const passport = require('passport');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocs = require('./src/Swagger/doc.json')
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+
+//swagger
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+
 
 app.use('/api/user', userRouter);
 app.use('/api/playlist',playlistRouter);

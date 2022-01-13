@@ -1,0 +1,707 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Music API",
+      "description": "Music API",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ], 
+        "paths": {
+        "/api/login":{
+            "post":{
+                "description":"Login",
+                "parameters":[
+                
+                    {   "name":"login",
+                        "type":"string",
+                        "in":"body"
+                    },   
+                    {   "name":"password",
+                        "type":"string",
+                        "in":"body"
+                    }
+                ],
+                "produces":"application/json",
+    
+                "responses":{
+                    "200":{"description":"Login", 
+                            "schema":{
+                                "type": "string",
+                                "headers":{
+                                    "X-Rate-Limit":{
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "description": "calls per hour allowed by the user"},
+                                    "X-Expires-After":{
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "date in UTC when token expires"}
+                                }
+                            }
+                    }
+                   
+                },"tags": [ "Account" ]
+            }
+        },
+        
+        "/api/register/{id}":{
+            "post":{
+                "description":"Register",
+                "parameters":[
+                    {   "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                    },  
+                    {   "name":"login",
+                        "type":"string",
+                        "in":"body"
+                    },   
+                    {   "name":"password",
+                        "type":"string",
+                        "in":"body"
+                    }
+                ],
+                "produces":"application/json",
+    
+                "responses":{
+                    "200":{"description":"Register"                 
+                    }
+                   
+                },"tags": [ "Account" ]
+            }
+        },
+        
+        "/api/comment/all":{
+            "get":{
+                "description": "Get comment by id",
+                "parameters": [ 
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get comment"
+                    
+                    }
+                }, "tags": [ "Comment" ]
+            }
+           
+        },
+
+        "/api/comment/add/{id}":{
+            "post":{
+                "description": "Add comment",
+                "parameters": [ 
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }, 
+                        {
+                        "name":"userId",
+                        "type":"integer",
+                        "in":"body"
+                        },
+                        {
+                        "name":"musicId",
+                        "type":"integer",
+                        "in":"body"
+                        },
+                        {
+                        "name":"text",
+                        "type":"string",
+                        "in":"body"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Add comment"
+                    
+                    }
+                }, "tags": [ "Comment" ]
+            }
+           
+        },
+
+        "/api/comment/{id}":{
+            "get":{
+                "description": "Get comment by id",
+                "parameters": [
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get comment by id"
+                    
+                    }
+                }, "tags": [ "Comment" ]
+            },
+            "delete":{
+                "description": "delete comment by id",
+                "parameters": [
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get comment by id"
+                    
+                    }
+                }, "tags": [ "Comment" ]
+            },
+            "put":{
+                "description": "Changed comment by id",
+                "parameters": [ 
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    }, 
+                    {
+                    "name":"userId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                    {
+                    "name":"musicId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                    {
+                    "name":"text",
+                    "type":"string",
+                    "in":"body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "GChanged comment by id"
+                    
+                    }
+                }, "tags": [ "Comment" ]
+            }
+        },
+
+        "/api/follower/{id}":{
+            "post":{
+                "description": "Create follower",
+                "parameters": [ 
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    },
+                    {
+                    "name":"userId",
+                    "type":"integer",
+                    "in":"path"
+                    },
+                    {
+                    "name":"followersId",
+                    "type":"integer",
+                    "in":"path"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                    "description": "Create follower"
+                    
+                    }
+                }, "tags": [ "Follower" ]
+            },
+            "delete":{
+                "description": "Delete follower",
+                "parameters": [ 
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    }
+
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Delete follower"
+                    
+                    }
+                }, "tags": [ "Follower" ]
+            }
+           
+        },
+
+        "/api/follower/all":{
+            "get":{
+                "description": "Get all followers",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                    "description": "Get all followers"
+                    }
+                }, "tags": [ "Follower" ]
+            }
+        },
+
+        "/api/genre/{id}":{
+            "get":{
+                "description": "Get genre by id",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get genre by id"
+                    }
+                }, "tags": [ "Genre" ]
+            },
+            "post":{
+                "description": "Add genre",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    },
+                    {
+                    "name":"name",
+                    "type":"string",
+                    "in":"body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Add genre"
+                    }
+                }, "tags": [ "Genre" ]
+            },
+            "delete":{
+                "description": "Delete genre",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Delete genre"
+                    }
+                }, "tags": [ "Genre" ]
+            }
+        },
+
+        "/api/genre/all":{
+            "get":{
+                "description": "Get all genres",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get all genres"
+                    }
+                }, "tags": [ "Genre" ]
+            }
+        },
+
+        "/api/like/all":{
+            "get":{
+                "description": "Get all likes",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get all likes"
+                    }
+                }, "tags": [ "Like" ]
+            }
+        },
+
+        "/api/like/{id}":{
+            "get":{
+                "description": "Get like by id",
+                "parameters": [
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get like by id"
+                    }
+                }, "tags": [ "Like" ]
+            },
+            "post":{
+                "description": "Add like",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    },
+                    {
+                    "name":"authorId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                    {
+                    "name":"musicId",
+                    "type":"integer",
+                    "in":"body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Add like"
+                    }
+                }, "tags": [ "Like" ]
+            }
+        },
+
+        "/api/music/{id}":{
+            "get":{
+                "description": "Get music by id",
+                "parameters": [
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get music by id"
+                    }
+                }, "tags": [ "Music" ]
+            },
+            "post":{
+                "description": "Create music",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    },
+                     {
+                    "name":"name",
+                    "type":"string",
+                    "in":"body"
+                    },
+                     {
+                    "name":"authorId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                     {
+                    "name":"genreId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                     {
+                    "name":"file",
+                    "type":"string",
+                    "in":"body"
+                    },
+                     {
+                    "name":"avatar",
+                    "type":"string",
+                    "in":"body"
+                    },
+                     {
+                    "name":"text",
+                    "type":"string",
+                    "in":"body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Create music"
+                    }
+                }, "tags": [ "Music" ]
+            },
+            "delete":{
+                "description": "Delete music by id",
+                "parameters": [
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Delete music by id"
+                    }
+                }, "tags": [ "Music" ]
+            },
+            "put":{
+                "description": "Change music",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    },
+                     {
+                    "name":"name",
+                    "type":"string",
+                    "in":"body"
+                    },
+                     {
+                    "name":"authorId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                     {
+                    "name":"genreId",
+                    "type":"integer",
+                    "in":"body"
+                    },
+                     {
+                    "name":"file",
+                    "type":"string",
+                    "in":"body"
+                    },
+                     {
+                    "name":"avatar",
+                    "type":"string",
+                    "in":"body"
+                    },
+                     {
+                    "name":"text",
+                    "type":"string",
+                    "in":"body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Change music"
+                    }
+                }, "tags": [ "Music" ]
+            }
+        },
+
+
+        "/api/music/all":{
+            "get":{
+                "description": "Get all music",
+                "parameters": [
+                    {
+                        "name":"id",
+                        "type":"integer",
+                        "in":"path"
+                        }
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Get all music"
+                    }
+                }, "tags": [ "Music" ]
+            }
+        },
+        "/api/user/{id}": {
+            "get": {
+            "description": "Get user by",
+            "parameters": [
+                    {"name":"id","id":{"type":"int"}}  
+            ],
+            "responses": {
+                "200": {
+                "description": "Get user by"
+                
+                }
+            }, "tags": [ "User" ]
+             
+            },
+            
+            "put": {
+                "description": "Post user",
+                "parameters": [
+                    {"name":"id","id":{"type":"int"}},
+                    {"name":"login","login":{"type":"string"}},   
+                    {"name":"password","login":{"type":"string"}}
+                ],
+                "responses": {
+                "201": {
+                    "description": "Post user"
+                    
+                }
+                }, "tags": [ "User" ]
+            },
+            "delete": {
+                "description": "Delete user",
+                "parameters": [
+                    {"name":"id","id":{"type":"int"}}
+                ],
+                "responses": {
+                "200": {
+                    "description": "Delete user"
+                    
+                }
+                }, "tags": [ "User" ]
+            }
+            
+        },
+            "/api/user/all": {
+                "get": {
+                "description": "Get all users",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                    "description": "Array of all users"
+                    
+                    }
+                }, "tags": [ "User" ]
+            }
+        },
+        "/api/playlist/{id}": {
+            "get": {
+            "description": "Get playlist",
+            "parameters": [
+                {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    } 
+            ],
+            "responses": {
+                "200": {
+                "description": "Get playlist"
+                
+                }
+            }, "tags": [ "Playlist" ]
+            },
+
+            "delete": {
+                "description": "Delete playlist",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    }  
+                ],
+                "responses": {
+                    "200": {
+                    "description": "Delete playlist"
+                    
+                    }
+                }, "tags": [ "Playlist" ]
+            },
+            "post": {
+                "description": "Create playlist",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    } ,
+                    {
+                    "name":"name",
+                    "type":"steing",
+                    "in":"body"
+                    },
+                     {
+                    "name":"avatar",
+                    "type":"strinf",
+                    "in":"body"
+                    },
+                    {
+                    "name":"text",
+                    "type":"string",
+                    "in":"body"
+                    }  
+                ],
+                "responses": {
+                    "201": {
+                    "description": "Create playlist"
+                    
+                    }
+                }, "tags": [ "Playlist" ]
+            },
+            "put": {
+                "description": "Change playlist",
+                "parameters": [
+                    {
+                    "name":"id",
+                    "type":"integer",
+                    "in":"path"
+                    } ,
+                    {
+                    "name":"name",
+                    "type":"steing",
+                    "in":"body"
+                    },
+                     {
+                    "name":"avatar",
+                    "type":"strinf",
+                    "in":"body"
+                    },
+                    {
+                    "name":"text",
+                    "type":"string",
+                    "in":"body"
+                    }  
+                ],
+                "responses": {
+                    "201": {
+                    "description": "Change playlist"
+                    
+                    }
+                }, "tags": [ "Playlist" ]
+            }
+        },
+        "/api/playlist/all": {
+            "get": {
+            "description": "Get all playlists",
+            "parameters": [
+            ],
+            "responses": {
+                "200": {
+                "description": "Get all playlists"
+                
+                }
+            }, "tags": [ "Playlist" ]
+            }
+        }
+    },
+    "definitions": {
+      "Todo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1"
+          },
+          "text": {
+            "type": "string",
+            "example": "test"
+          },
+          "done": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      }
+     
+    }
+   }
