@@ -18,11 +18,11 @@
                 
                     {   "name":"login",
                         "type":"string",
-                        "in":"body"
+                        "in":"path"
                     },   
                     {   "name":"password",
                         "type":"string",
-                        "in":"body"
+                        "in":"path"
                     }
                 ],
                 "produces":"application/json",
@@ -58,11 +58,11 @@
                     },  
                     {   "name":"login",
                         "type":"string",
-                        "in":"body"
+                        "in":"path"
                     },   
                     {   "name":"password",
                         "type":"string",
-                        "in":"body"
+                        "in":"path"
                     }
                 ],
                 "produces":"application/json",
@@ -107,17 +107,17 @@
                         {
                         "name":"userId",
                         "type":"integer",
-                        "in":"body"
+                        "in":"path"
                         },
                         {
                         "name":"musicId",
                         "type":"integer",
-                        "in":"body"
+                        "in":"path"
                         },
                         {
                         "name":"text",
                         "type":"string",
-                        "in":"body"
+                        "in":"path"
                         }
                 ],
                 "responses": {
@@ -174,17 +174,17 @@
                     {
                     "name":"userId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                     {
                     "name":"musicId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                     {
                     "name":"text",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     }
                 ],
                 "responses": {
@@ -282,7 +282,7 @@
                     {
                     "name":"name",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     }
                 ],
                 "responses": {
@@ -361,12 +361,12 @@
                     {
                     "name":"authorId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                     {
                     "name":"musicId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     }
                 ],
                 "responses": {
@@ -404,32 +404,32 @@
                      {
                     "name":"name",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"authorId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"genreId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"file",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"avatar",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"text",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     }
                 ],
                 "responses": {
@@ -464,32 +464,32 @@
                      {
                     "name":"name",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"authorId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"genreId",
                     "type":"integer",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"file",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"avatar",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"text",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     }
                 ],
                 "responses": {
@@ -618,17 +618,17 @@
                     {
                     "name":"name",
                     "type":"steing",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"avatar",
                     "type":"strinf",
-                    "in":"body"
+                    "in":"path"
                     },
                     {
                     "name":"text",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     }  
                 ],
                 "responses": {
@@ -649,17 +649,17 @@
                     {
                     "name":"name",
                     "type":"steing",
-                    "in":"body"
+                    "in":"path"
                     },
                      {
                     "name":"avatar",
                     "type":"strinf",
-                    "in":"body"
+                    "in":"path"
                     },
                     {
                     "name":"text",
                     "type":"string",
-                    "in":"body"
+                    "in":"path"
                     }  
                 ],
                 "responses": {
@@ -685,23 +685,177 @@
         }
     },
     "definitions": {
-      "Todo": {
+      "User": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
+            "type": "integer",
             "example": "1"
           },
-          "text": {
+          "login": {
             "type": "string",
-            "example": "test"
+            "example": "DmitryBestNameInTheWorld)"
           },
-          "done": {
-            "type": "boolean",
-            "example": false
+          "password": {
+            "type": "string",
+            "example": "PasswordTest1234"
           }
         }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "intger",
+            "example": "1"
+          },
+          "userId": {
+            "type": "integer",
+            "example": "22"
+          },
+          "musicId": {
+            "type": "integer",
+            "example": "1533"
+          },
+          "text":{
+              "type":"string",
+              "example":"Very cool music. BUT Saboton better"
+          }
+        }
+      },
+      "Follower": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "userId": {
+            "type": "integer",
+            "example": "4123"
+          },
+          "followersId": {
+            "type": "integer",
+            "example": "974"
+          }
+        }
+      },
+      "Genre": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "name": {
+            "type": "text",
+            "example": "Metal"
+          }
+        }
+      },
+      "Like": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "authorId": {
+            "type": "integer",
+            "example": "4123"
+          },
+          "musicId": {
+            "type": "integer",
+            "example": "974"
+          }
+        }
+      },
+      "music": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "name":{
+              "type":"string",
+              "example":"The Last Battle"
+          },
+          "authorId": {
+            "type": "integer",
+            "example": "4123"
+          },
+          "genreId": {
+            "type": "integer",
+            "example": "15"
+          },
+          "file": {
+            "type": "strng",
+            "example": "Yande:Http/rgerf/ergref/picture1"
+          },
+          "avatar": {
+            "type": "strng",
+            "example": "Yande:Http/rgerf/ergref/picture2"
+          },
+          "text": {
+            "type": "strng",
+            "example": "Waaaaarrrr!!!"
+          }
+        }
+      },
+      "Playlist": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer",
+                "example": "1"
+              },
+              "name":{
+                  "type":"string",
+                  "example":"For working"
+              },
+              "authorId": {
+                "type": "integer",
+                "example": "4122"
+              },      
+              "avatar": {
+                "type": "strng",
+                "example": "Yande:Http/rgerf/ergref/picture22"
+              },
+              "text": {
+                "type": "strng",
+                "example": "For working and relaxing!!!"
+              }
+        }
+      },
+      "User_info": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer",
+                "example": "1"
+              },
+              "userId": {
+                "type": "integer",
+                "example": "4122"
+              },      
+              "email":{
+                  "type":"string",
+                  "example":"test@mail.ru"
+              },
+              "avatar": {
+                "type": "strng",
+                "example": "Yande:Http/rgerf/ergref/user212/picture212"
+              },
+              "sex": {
+                "type": "strng",
+                "example": "Man"
+              },
+              "country":{
+                  "type":"string",
+                  "example":"Belarus"
+              }
+        }
       }
-     
     }
    }
