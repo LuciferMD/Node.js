@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const logger = require('../Logger/logger')
 
 const sequelize = new Sequelize("mus", "postgres", "1234", {
   dialect: "postgres",
@@ -8,9 +9,16 @@ const sequelize = new Sequelize("mus", "postgres", "1234", {
 
 sequelize.authenticate()
 .catch((e) => {
-  console.log('server: cannot connect to db;' + e);
-  return;
+  logger(
+    {
+        message: 'Cannot connect to db: ' + e,
+        level: 'ERROR',
+    });
 });
-console.log('server: connection to db completed');
+logger(
+  {
+      message: `Connected to db`,
+      level: 'INFO',
+  });
 
 module.exports = sequelize;

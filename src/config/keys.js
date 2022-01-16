@@ -1,4 +1,4 @@
 module.exports = {
-    jwt: 'EveryoneHasOnesOwnPath.'
-
+    jwt: 'EveryoneHasOnesOwnPath.',
+  
 }

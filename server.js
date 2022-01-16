@@ -13,13 +13,16 @@ const bodyParser =require('body-parser');
 const passport = require('passport');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./src/Swagger/doc.json')
+const logger = require('./src/Logger/logger')
+const mongoose = require('mongoose');
+const mongoOptions = require('./src/config/mongo_config')
+
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 
 //swagger
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
@@ -37,8 +40,23 @@ app.use(passport.initialize());
 
 require('./src/Middleware/passport')(passport);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+
+app.listen(port, async() => {
+
+  logger(
+    {
+        message: `App listening at http://locallhost:3000`,
+        level: 'INFO',
+    });
+
+
+  // mongoose
+  mongoose.connect(
+    `mongodb://${mongoOptions.url}/${mongoOptions.collectionName}`, 
+    { 
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+    });
 })
   
 
